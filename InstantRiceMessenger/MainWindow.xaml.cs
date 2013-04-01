@@ -87,7 +87,14 @@ namespace InstantRiceMessenger
 		private void eventSend(object sender, EventArgs e)
 		{
 			if (inputMsg.Text == ""){ return; }
-			conn.Client.Send(inputMsg.Text);
+			try
+			{
+				conn.Client.Send(inputMsg.Text);
+			}
+			catch
+			{
+				statusText.Text = "Message undeliverable";
+			}
 		}
 	}
 }
