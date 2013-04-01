@@ -1,0 +1,30 @@
+﻿<Window x:Class="InstantRiceMessenger.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="Instant Rice Messenger" Icon="Titlebar.ico" Height="150" Width="400" Background="#FFE6E6E6"
+	>
+	<Window.Resources>
+		<DataTemplate x:Key="connectionTemplate">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="IP:" VerticalAlignment="Center" Margin="4" />
+				<TextBox Text="{Binding Host}" Width="90" Margin="4" />
+				<TextBlock Text="PORT:" VerticalAlignment="Center" Margin="4" />
+				<TextBox Text="{Binding Port}" Width="40" Margin="4" />
+			</StackPanel>
+		</DataTemplate>
+	</Window.Resources>
+	<DockPanel LastChildFill="True">
+		<StatusBar DockPanel.Dock="Bottom">
+			<TextBlock Name="statusText" Text="Ready" />
+		</StatusBar>
+		<DockPanel LastChildFill="True">
+			<DockPanel LastChildFill="True">
+				<DockPanel LastChildFill="True" DockPanel.Dock="Top">
+					<ItemsControl Name="connInputs" ItemTemplate="{StaticResource connectionTemplate}" />
+					<Button Content="SEND" Margin="4" Click="eventSend" />
+				</DockPanel>
+				<TextBox Name="inputMsg" AcceptsReturn="True" TextWrapping="Wrap" CharacterCasing="Upper" />
+			</DockPanel>
+		</DockPanel>
+	</DockPanel>
+</Window>
